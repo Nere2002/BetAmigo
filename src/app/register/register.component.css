@@ -1,0 +1,55 @@
+body {
+  background-image: url('/assets/betamigofondo.jpg');
+}
+.register-container {
+  width: 90%; /* Ancho del contenedor, ajustado según tus necesidades */
+  max-width: 350px; /* Ancho máximo del contenedor */
+  margin: 0 auto; /* Centrar horizontalmente */
+  padding: 20px;
+  background-color: #333;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  color: #fff;
+}
+
+h2 {
+  text-align: center;
+  color: #ffcc00; /* Amarillo dorado */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+div {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="email"],
+input[type="password"],
+button[type="submit"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+input[type="email"],
+input[type="password"] {
+  background-color: #444;
+  color: #fff;
+}
+
+button[type="submit"] {
+  background-color: #32cd32; /* Verde */
+  color: #fff;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #228b22; /* Verde más oscuro al pasar el ratón */
+}
