@@ -11,6 +11,7 @@ import {RouterOutlet} from "@angular/router";
 import { InicioComponent } from './inicio/inicio.component';
 import {AngularFireModule} from "@angular/fire/compat";
 import { Environment } from "../environment";
+import { ResultadosComponent } from './resultados/resultados.component';
 
 
 
@@ -21,7 +22,8 @@ import { Environment } from "../environment";
     AppComponent,
     RegisterComponent,
     LoginComponent,
-    InicioComponent
+    InicioComponent,
+    ResultadosComponent
   ],
   imports: [
     BrowserModule,
