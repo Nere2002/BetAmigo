@@ -18,20 +18,6 @@ export class LoginComponent {
     private router: Router,
     public afAuth: AngularFireAuth) { }
 
-  // login() {
-  //   this.authService.login(this.email, this.password)
-  //     .subscribe(
-  //       data => {
-  //         console.log('Inicio de sesión exitoso:', data);
-  //         this.goToinicio();
-  //         // Redirige a la página de inicio o a otra página después del inicio de sesión exitoso
-  //       },
-  //       error => {
-  //         console.error('Error al iniciar sesión:', error);
-  //         // Maneja el error de inicio de sesión, muestra un mensaje de error, etc.
-  //       }
-  //     );
-  // }
 
   login() {
     this.afAuth.signInWithEmailAndPassword(this.email, this.password)

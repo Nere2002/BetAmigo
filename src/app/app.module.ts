@@ -12,6 +12,9 @@ import { InicioComponent } from './inicio/inicio.component';
 import {AngularFireModule} from "@angular/fire/compat";
 import { Environment } from "../environment";
 import { ResultadosComponent } from './resultados/resultados.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { NavComponent } from './nav/nav.component';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -23,7 +26,10 @@ import { ResultadosComponent } from './resultados/resultados.component';
     RegisterComponent,
     LoginComponent,
     InicioComponent,
-    ResultadosComponent
+    ResultadosComponent,
+    PerfilComponent,
+    NavComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,35 @@
+header {
+  display: flex; /* Utilizamos flexbox para distribuir los elementos en línea */
+  justify-content: space-between; /* Los elementos se distribuyen horizontalmente con espacio entre ellos */
+  align-items: center; /* Los elementos se alinean verticalmente al centro */
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+.titulo {
+  font-size: 6rem;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(to right, #ff7f00, #ffb300);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: white;
+  animation: neon 2s ease-in-out infinite;
+}
+
+@keyframes neon {
+  0% {
+    text-shadow: 0 0 5px #ffb300, 0 0 10px #ffb300, 0 0 15px #ffb300, 0 0 20px #ffb300;
+  }
+  50% {
+    text-shadow: 0 0 10px #ffb300, 0 0 20px #ffb300, 0 0 30px #ffb300, 0 0 40px #ffb300;
+  }
+  100% {
+    text-shadow: 0 0 5px #ffb300, 0 0 10px #ffb300, 0 0 15px #ffb300, 0 0 20px #ffb300;
+  }
+}
+
+img{
+  height: auto;
+  width: 170px;
+}
