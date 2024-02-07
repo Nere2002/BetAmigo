@@ -1,0 +1,42 @@
+.profile-image img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.image-options {
+  margin-top: 20px;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-list div {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.image-list img {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.image-list img:hover {
+  border: 2px solid #007bff;
+}
+
+
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
