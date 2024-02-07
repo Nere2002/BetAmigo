@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
 
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
@@ -9,20 +10,29 @@ import {AuthService} from "../auth.service";
 })
 export class NavComponent {
 
+
   constructor(private router: Router,private authService: AuthService) {
+
+
   }
-  //---------------- BOTONES --------------------------
-  goToInicio() {
+  goToInicio(){
     this.router.navigate(['/inicio']); // Navega a la página de registro
   }
-  goToPerfil() {
+  goToPerfil()
+  {
     this.router.navigate(['/perfil']); // Navega a la página de registro
   }
-  goToresultados() {
+  goToresultados()
+  {
     this.router.navigate(['/resultados']); // Navega a la página de registro
   }
-  goToCerrarSesion(){
+  goToCerrarSesion()
+  {
+
     this.authService.logout();
+
+
+    this.router.navigate(['/login']);
 
   }
 }

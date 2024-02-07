@@ -1,11 +1,14 @@
+
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AngularFireStorage} from "@angular/fire/compat/storage";
+
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css']
 })
+
 export class PerfilComponent implements OnInit {
   @Output() selectedImageUrlChange: EventEmitter<string | null> = new EventEmitter<string | null>();
   availableImages: any[] = []; // Array para almacenar las imágenes disponibles
@@ -28,5 +31,6 @@ export class PerfilComponent implements OnInit {
     this.selectedImageUrlChange.emit(this.selectedImageUrl);
     // Aquí puedes guardar el URL de la imagen en el perfil del usuario en la base de datos
   }
+
 
 }

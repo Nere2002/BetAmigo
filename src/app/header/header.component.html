@@ -1,12 +1,10 @@
 <header>
-  <img class="logo" src="assets/betamigofondo.jpg">
+  <img class="logo" src="assets/logobetamigo.png">
   <h1 class="titulo">BETAMIGO</h1>
-  <section class="user-info">
-    <div class="profile-image">
-      <img [src]="selectedImageUrl ? selectedImageUrl : 'favicon.ico'">
-    </div>
-
-    <h3 class="usuario">{{ userEmail }}</h3>
+  <section class="profile-image">
+    <img [src]="selectedImageUrl ? selectedImageUrl : 'favicon.ico'"> <!-- Mostrar la imagen seleccionada o el icono predeterminado -->
+    <h2 class="usuario">{{ userEmail }}</h2>
     <!-- Aquí puedes mostrar la información del usuario, como su saldo, nombre, etc. -->
   </section>
 </header>
+

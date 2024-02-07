@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent {
+  selectedImageUrl: string | null = null; // URL de la imagen seleccionada
   constructor(private router: Router) {
   }
 
