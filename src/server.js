@@ -14,12 +14,7 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
 
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: "https://betamigo-proyecto-default-rtdb.firebaseio.com/"
-// });
 
-// Ruta de registro
 
 app.post('/register', async (req, res) => {
   try {
@@ -35,28 +30,7 @@ app.post('/register', async (req, res) => {
   }
 });
 
-// app.post('/registro', async (req, res) => {
-//   try {
-//     const { email, password } = req.body;
-//     if (!email || !password) {
-//       return res.status(400).send("Correo electrónico y contraseña son obligatorios");
-//     }
-//
-//     // Utiliza la API de Firebase Authentication para crear un nuevo usuario
-//     const userRecord = await admin.auth().createUser({
-//       email: email,
-//       password: password
-//     });
-//
-//     // Devuelve el UID del nuevo usuario creado como respuesta exitosa
-//     console.log("Usuario registrado correctamente");
-//     res.status(201).send(userRecord.uid);
-//   } catch (error) {
-//     // Si hay algún error, devuelve un mensaje de error
-//     console.error("Error al registrar usuario:", error);
-//     res.status(500).send("Error interno del servidor al registrar usuario");
-//   }
-// });
+
 
 // Ruta de inicio de sesión
 app.post('/login', async (req, res) => {
