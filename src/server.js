@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const serviceAccount = require('./betamigo-proyecto-firebase-adminsdk-f7lts-321c4453ab.json');
+const serviceAccount = require('./assets/betamigo-d49f9-firebase-adminsdk-3x0yz-f138652610.json');
 
 const app = express();
 app.use(cors());
@@ -16,13 +16,34 @@ admin.initializeApp({
 
 
 
+// app.post('/register', async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
+//     const userRecord = await admin.auth().createUser({
+//       email,
+//       password,
+//     });
+//     res.status(200).send(userRecord);
+//   } catch (error) {
+//     console.error('Error registrando usuario:', error);
+//     res.status(500).send(error);
+//   }
+// });
 app.post('/register', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, displayName } = req.body;
     const userRecord = await admin.auth().createUser({
       email,
       password,
     });
+
+    // Crear documento de usuario en Firestore
+    await admin.firestore().collection('users').doc(userRecord.uid).set({
+      email,
+      displayName: displayName || '', // Usar displayName si está definido, de lo contrario, una cadena vacía
+      // Otros datos de usuario aquí
+    });
+
     res.status(200).send(userRecord);
   } catch (error) {
     console.error('Error registrando usuario:', error);

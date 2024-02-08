@@ -28,6 +28,10 @@
 .image-list img:hover {
   border: 2px solid #007bff;
 }
+.perfilusuario{
+  border:2px solid #000000;
+  margin-top: 2%;
+}
 
 
 
