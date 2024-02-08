@@ -31,7 +31,7 @@ admin.initializeApp({
 // });
 app.post('/register', async (req, res) => {
   try {
-    const { email, password, displayName } = req.body;
+    const { email, password, displayName} = req.body;
     const userRecord = await admin.auth().createUser({
       email,
       password,
@@ -40,8 +40,7 @@ app.post('/register', async (req, res) => {
     // Crear documento de usuario en Firestore
     await admin.firestore().collection('users').doc(userRecord.uid).set({
       email,
-      displayName: displayName || '', // Usar displayName si está definido, de lo contrario, una cadena vacía
-      // Otros datos de usuario aquí
+     displayName
     });
 
     res.status(200).send(userRecord);
@@ -67,5 +66,5 @@ app.post('/login', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor <link>Node.js</link> corriendo en el puerto ${PORT}`);
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
 });

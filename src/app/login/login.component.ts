@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Component({
   selector: 'app-login',
@@ -16,29 +16,42 @@ export class LoginComponent {
 
   constructor(
     private router: Router,
-    public afAuth: AngularFireAuth) { }
+    public afAuth: AngularFireAuth,
+    private firestore: AngularFirestore // Inyectar AngularFirestore
+  ) { }
 
 
   login() {
     this.afAuth.signInWithEmailAndPassword(this.email, this.password)
       .then((userCredential) => {
-        console.log("Iniciar Sesion")
-        window.alert("Inicio de sesion exitoso ")
-        localStorage.setItem('userEmail', this.email);
-        this.goToinicio()
-        // Inicio de sesión exitoso
+        const user = userCredential.user;
+        // @ts-ignore
+        const userId = user.uid; // Obtener el UID del usuario
+        console.log("Iniciar Sesion");
+        window.alert("Inicio de sesión exitoso");
+
+        // Consultar Firestore para obtener el displayName del usuario
+        this.firestore.collection('users').doc(userId).get().subscribe(doc => {
+          if (doc.exists) {
+            // @ts-ignore
+            const displayName = doc.data().displayName;
+            sessionStorage.setItem('displayName', displayName); // Guardar el displayName en sessionStorage
+          }
+        });
+
+        this.goToInicio();
       })
       .catch((error) => {
-        console.log("error al iniciar sesion")
-        window.alert(" error al iniciar sesion ")
-        // Manejo de errores
+        console.log("error al iniciar sesion " + error);
+        window.alert("Error al iniciar sesión");
       });
   }
 
   goToRegister() {
-    this.router.navigate(['/register']); // Navega a la página de registro
+    this.router.navigate(['/register']); // Navegar a la página de registro
   }
-  goToinicio() {
-    this.router.navigate(['/inicio']); // Navega a la página de registro
+
+  goToInicio() {
+    this.router.navigate(['/inicio']); // Navegar a la página de inicio
   }
 }

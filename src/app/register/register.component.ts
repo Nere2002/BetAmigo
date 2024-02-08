@@ -41,8 +41,7 @@ export class RegisterComponent {
           // Verificar si displayName está definido antes de escribirlo en Firestore
           const data = {
             email: this.email,
-            displayName: this.displayName || '' // Usar displayName si está definido, de lo contrario, una cadena vacía
-            // Otros datos de usuario aquí
+            displayName: this.displayName
           };
           return this.firestore.collection('users').doc(user.uid).set(data);
         } else {
