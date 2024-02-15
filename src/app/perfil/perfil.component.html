@@ -1,20 +1,22 @@
 
 <app-header [selectedImageUrl]="selectedImageUrl"></app-header>
 <app-nav></app-nav>
-<div class="perfilusuario">
-  <h2>Perfil de Usuario</h2>
-  <div class="profile-image">
-    <img [src]="selectedImageUrl" alt="Imagen de perfil">
-  </div>
-  <div class="image-options">
-    <h3>Selecciona una imagen:</h3>
-    <div class="image-list">
-      <div *ngFor="let image of availableImages" (click)="selectImage(image)">
-        <img [src]="image.url" alt="Imagen de perfil">
+
+  <div class="perfilusuario">
+    <h2>Perfil de Usuario</h2>
+    <div class="profile-image">
+      <img [src]="selectedImageUrl" alt="Imagen de perfil">
+    </div>
+    <div class="image-options">
+      <h3>Selecciona una imagen:</h3>
+      <div class="image-list">
+        <div *ngFor="let image of availableImages" (click)="selectImage(image)">
+          <img [src]="image.url" alt="Imagen de perfil">
+        </div>
       </div>
     </div>
   </div>
-</div>
+
 
 
 <br>

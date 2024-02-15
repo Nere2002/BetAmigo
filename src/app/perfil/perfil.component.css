@@ -1,3 +1,4 @@
+
 .profile-image img {
   width: 200px;
   height: 200px;
@@ -23,14 +24,17 @@
   height: 100px;
   cursor: pointer;
   border-radius: 50%;
+
 }
 
 .image-list img:hover {
   border: 2px solid #007bff;
 }
 .perfilusuario{
-  border:2px solid #000000;
-  margin-top: 2%;
+  border:2px solid #ffffff;
+  margin: 2%;
+  border-radius: 50px;
+  color: white;
 }
 
 

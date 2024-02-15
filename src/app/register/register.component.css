@@ -1,5 +1,6 @@
 body {
-  background-image: url('/assets/betamigofondo.jpg');
+  background: #333333;
+
 }
 .register-container {
   width: 90%; /* Ancho del contenedor, ajustado según tus necesidades */

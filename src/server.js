@@ -64,6 +64,24 @@ app.post('/login', async (req, res) => {
   }
 });
 
+app.put('/users/profile/imageUrl', async (req, res) => {
+  try {
+    const userId = req.user.uid; // Obtén el ID del usuario actual (puedes obtenerlo del token de autenticación)
+    const { imageUrl } = req.body;
+
+    // Actualiza el perfil del usuario en la base de datos con la nueva URL de la imagen
+    await admin.firestore().collection('users').doc(userId).update({
+      profileImageUrl: imageUrl
+    });
+
+    res.status(200).send({ message: 'URL de imagen actualizado en el perfil del usuario' });
+  } catch (error) {
+    console.error('Error al guardar URL de imagen en el perfil del usuario:', error);
+    res.status(500).send({ error: 'Error al guardar URL de imagen en el perfil del usuario' });
+  }
+});
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`);
