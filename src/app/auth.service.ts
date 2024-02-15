@@ -17,8 +17,12 @@ export class AuthService {
     return this.http.post<any>('http://localhost:3000/login', { email, password });
   }
   logout(): void {
-
     localStorage.removeItem('token'); // Elimina el token de autenticación del almacenamiento local
-    this.router.navigate(['/login']); // Redirige al usuario a la página de inicio de sesión
+    this.router.navigate(['/login'], { replaceUrl: true }); // Redirige al usuario a la página de inicio de sesión y reemplaza la URL actual en el historial del navegador
+    this.clearHistory(); // Limpia el historial de navegación
+  }
+
+  clearHistory(): void {
+    window.history.pushState(null, '', window.location.href);
   }
 }

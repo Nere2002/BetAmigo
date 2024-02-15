@@ -28,11 +28,7 @@ export class NavComponent {
   }
   goToCerrarSesion()
   {
-
     this.authService.logout();
-
-
-    this.router.navigate(['/login']);
 
   }
 }

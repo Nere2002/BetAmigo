@@ -3,6 +3,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {AngularFireStorage} from "@angular/fire/compat/storage";
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
+import {ProfileService} from "../profile.service";
 
 
 
@@ -18,7 +19,7 @@ export class PerfilComponent implements OnInit {
   selectedImageUrl: string | null = null; // URL de la imagen seleccionada
 
   imageUrl: string | null; // Agrega la propiedad imageUrl
-  constructor(private storage: AngularFireStorage, private firestore: AngularFirestore,private afAuth: AngularFireAuth) {
+  constructor(private profileService: ProfileService,private storage: AngularFireStorage, private firestore: AngularFirestore,private afAuth: AngularFireAuth) {
     this.imageUrl = null;
   }
 
@@ -41,47 +42,16 @@ export class PerfilComponent implements OnInit {
     this.getProfileImageUrl();
   }
 
+
   selectImage(image: any): void {
     this.selectedImageUrl = image.url; // Establecer la imagen seleccionada
     this.selectedImageUrlChange.emit(this.selectedImageUrl);
     // Aquí puedes guardar el URL de la imagen en el perfil del usuario en la base de datos
-    this.saveImageUrlToUserProfile(this.selectedImageUrl);
+    this.profileService.saveImageUrlToUserProfile(this.selectedImageUrl);
   }
-
-  async saveImageUrlToUserProfile(imageUrl: string | null): Promise<void> {
-    try {
-      const userId = await this.getCurrentUserId(); // Obtener el ID del usuario actual
-      if (userId) {
-        const userRef = this.firestore.collection('users').doc(userId);
-        await userRef.update({
-          profileImageUrl: imageUrl
-        });
-        console.log('URL de imagen guardado en el perfil del usuario');
-      } else {
-        console.error('El usuario no está autenticado');
-      }
-    } catch (error) {
-      console.error('Error al guardar URL de imagen en el perfil del usuario:', error);
-    }
-  }
-
-  async getCurrentUserId(): Promise<string | null> {
-    try {
-      const user = await this.afAuth.currentUser;
-      if (user) {
-        return user.uid; // Retorna el UID del usuario si está autenticado
-      } else {
-        return null; // Retorna null si el usuario no está autenticado
-      }
-    } catch (error) {
-      console.error('Error al obtener el ID del usuario actual:', error);
-      return null;
-    }
-  }
-
   async getProfileImageUrl(): Promise<void> {
     try {
-      const userId = await this.getCurrentUserId();
+      const userId = await this.profileService.getCurrentUserId();
       if (userId) {
         const userDoc = await this.firestore.collection('users').doc(userId).ref.get();
         const userData: any = userDoc.data(); // Especifica el tipo como 'any'
@@ -97,6 +67,12 @@ export class PerfilComponent implements OnInit {
       console.error('Error al obtener el URL de imagen de perfil:', error);
     }
   }
+
+
+
+
+
+
 
 
 
